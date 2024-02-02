@@ -10,7 +10,7 @@ Warlock::Warlock() {}
 Warlock & Warlock::operator=(Warlock const & rhs)
 {
     this->_name = rhs._name;
-    this->_title + rhs._title;
+    this->_title = rhs._title;
     return *this;
 }
 

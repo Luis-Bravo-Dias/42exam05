@@ -1,6 +1,8 @@
 #include <iostream>
 #include <map>
 #include "ASpell.hpp"
+#include "ATarget.hpp"
+#include "SpellBook.hpp"
 
 class Warlock
 {
@@ -21,5 +23,5 @@ class Warlock
         Warlock & operator=(Warlock const & rhs);
         std::string _name;
         std::string _title;
-        std::map < std::string, ASpell * > _SpellBook;
+        SpellBook _SpellBook;
 };

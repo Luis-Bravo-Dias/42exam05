@@ -10,7 +10,7 @@ Warlock::Warlock() {}
 Warlock & Warlock::operator=(Warlock const & rhs)
 {
     this->_name = rhs._name;
-    this->_title + rhs._title;
+    this->_title = rhs._title;
     return *this;
 }
 
@@ -45,19 +45,16 @@ void    Warlock::introduce() const
 
 void Warlock::learnSpell(ASpell* spell)
 {
-    if (spell)
-        if (_SpellBook.find(spell->getName()) == _SpellBook.end())
-            _SpellBook[spell->getName()] = spell->clone();
+    _SpellBook.learnSpell(spell);
 }
 
 void Warlock::forgetSpell(std::string SpellName)
 {
-    if (_SpellBook.find(SpellName) != _SpellBook.end())
-        _SpellBook.erase(_SpellBook.find(SpellName));
+    _SpellBook.forgetSpell(SpellName);
 }
 
 void Warlock::launchSpell(std::string SpellName, ATarget const & target)
 {
-    if (_SpellBook.find(SpellName) != _SpellBook.end())
-        _SpellBook[SpellName]->launch(target);
+    if (_SpellBook.createSpell(SpellName))
+        _SpellBook.createSpell(SpellName)->launch(target);
 }
